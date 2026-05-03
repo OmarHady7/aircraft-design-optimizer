@@ -5,10 +5,15 @@ best_ld = 0
 velocity = 50
 Cd = 0.02
 required_lift = 5000
+max_wing_area = 18
 
 best_design = None
 
 for wing_area in range(5, 21):
+
+    if wing_area > max_wing_area:
+        continue
+
     for angle in range(0, 16):
 
         Cl = get_cl_from_angle(angle)
@@ -31,3 +36,6 @@ print(f"Angle of Attack: {best_design[1]}")
 print(f"Lift: {best_design[2]:.2f} N")
 print(f"Drag: {best_design[3]:.2f} N")
 print(f"L/D Ratio: {best_design[4]:.2f}")
+
+print("\nInterpretation:")
+print("This design meets lift requirements while maximizing aerodynamic efficiency within realistic constraints.")
